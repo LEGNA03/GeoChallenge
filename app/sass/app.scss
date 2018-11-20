@@ -1,3 +1,5 @@
-body{
-    background: #f3df21;
-}
+@import "base";
+@import "startingGameScreen";
+@import "game";
+@import "score";
+@import "time";

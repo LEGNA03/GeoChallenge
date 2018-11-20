@@ -1,0 +1,14 @@
+.score {
+  display: flex;
+  justify-content: space-around;
+    .result {
+      width: 20%;
+      height: 50px;
+      background: coral;
+      margin-top: 20px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+}
