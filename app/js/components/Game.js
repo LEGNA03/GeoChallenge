@@ -76,6 +76,7 @@ class Game extends React.Component{
                         time: this.state.time - 1,
                     });
                 } else {
+                    clearInterval(this.interval);
                     this.setState({
                         lifes: this.state.lifes - 1,
                         streak: 0,
@@ -130,7 +131,7 @@ class Game extends React.Component{
                     <Score score={this.state.score} streak={this.state.streak} lifes={this.state.lifes}/>
                     <Time time={this.state.time}/>
                     <div className="timeKeeper">
-                        <div className="ar"></div>
+                        <div className="br"></div>
                     </div>
                     <div className="flags">
                         <h1>{this.state.correctCountry}</h1>
