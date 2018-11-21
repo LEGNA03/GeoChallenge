@@ -9,14 +9,36 @@ class Game extends React.Component{
         super(props);
         this.state = {
             arrCountries: ["Afganistan", "Albania", "Algieria", "Andora", "Angola", "Antigua i Barbuda", "Arabia Saudyjska",
-                "Argentyna", "Armenia", "Australia", "Austria", "Azerbejdżan"],
+                "Argentyna", "Armenia", "Australia", "Austria", "Azerbejdżan", "Bahamy", "Bahrajn", "Bangladesz", "Barbados",
+                "Belgia", "Belize", "Benin", "Bhutan", "Białoruś", "Boliwia", "Botswana", "Bośnia i Hercegowina", "Brazylia",
+                "Brunei", "Burkina Faso", "Burundi", "Bułgaria", "Chile", "Chiny", "Chorwacja", "Cypr", "Czad", "Czarnogóra",
+                "Czechy", "Dania", "Demokratyczna Republika Konga", "Dominika", "Dominikana", "Dżibuti", "Egipt", "Ekwador",
+                "Erytrea", "Estonia", "Etiopia", "Fidżi", "Filipiny", "Finlandia", "Francja", "Gabon", "Gambia", "Ghana",
+                "Grecja", "Grenada", "Gruzja", "Gujana", "Gwatemala", "Gwinea", "Gwinea Bissau", "Gwinea Równikowa", "Haiti",
+                "Hiszpania", "Holandia", "Honduras", "Indie", "Indonezja", "Irak", "Iran", "Irlandia", "Islandia", "Izrael",
+                "Jamajka", "Japonia", "Jemen", "Jordania", "Kambodża", "Kamerun", "Kanada", "Katar", "Kazachstan", "Kenia",
+                "Kirgistan", "Kiribati", "Kolumbia", "Komory", "Kongo", "Korea Południowa", "Korea Północna", "Kosowo",
+                "Kostaryka", "Kuba", "Kuwejt", "Laos", "Lesotho", "Liban", "Liberia", "Libia", "Liechtenstein", "Litwa",
+                "Luksemburg", "Łotwa", "Macedonia", "Madagaskar", "Malawi", "Malediwy", "Malezja", "Mali", "Malta", "Maroko",
+                "Mauretania", "Mauritius", "Meksyk", "Mikronezja", "Mjanma", "Monako", "Mongolia", "Mozamik", "Mołdawia",
+                "Namibia", "Nauru", "Nepal", "Niemcy", "Niger", "Nigeria", "Nikaragua", "Norwegia", "Nowa Zelandia", "Oman",
+                "Pakistan", "Palau", "Panama", "Papua Nowa Gwinea", "Paragwaj", "Peru", "Polska", "Portugalia",
+                "Republika Południowej Afryki", "Republika Zielonego Przylądka", "Republika Środkowoafrykańska", "Rosja",
+                "Rumunia", "Rwanda", "Saint Kitts i Nevis", "Saint Lucia", "Saint Vincent i Grenadyny", "Salwador", "Samoa",
+                "San Marino", "Senegal", "Serbia", "Seszele", "Sierra Leone", "Singapur", "Somalia", "Sri Lanka",
+                "Stany Zjednoczone", "Suazi", "Sudan", "Sudan Południowy", "Surinam", "Syria", "Szwajcaria", "Szwecja",
+                "Słowacja", "Słowenia", "Tadżykistan", "Tajlandia", "Tanzania", "Timor Wschodni", "Togo", "Tonga",
+                "Trynidad i Tabago", "Tunezja", "Turcja", "Turkmenistan", "Tuvalu", "Uganda", "Ukraina", "Urugwaj", "Uzbekistan",
+                "Vanuatu", "Watykan", "Wenezuela", "Wielka Brytania", "Wietnam", "Wybrzeże Kości Słoniowej", "Wyspy Marshalla",
+                "Wyspy Salomona", "Wyspy Świętego Tomasza i Książęca", "Węgry", "Włochy", "Zambia", "Zimbabwe",
+                "Zjednoczone Emiraty Arabskie"],
             finalFlags: [],
             correctCountry: "",
             score: 0,
             streak: 0,
             lifes: 3,
             time: 10,
-            win: false,
+            win: false
         }
     }
 
@@ -93,7 +115,6 @@ class Game extends React.Component{
     componentDidMount() {
         this.getRandomFlags();
         this.run();
-
     }
 
     clickHandler = (flag) => {
@@ -131,7 +152,7 @@ class Game extends React.Component{
                     <Score score={this.state.score} streak={this.state.streak} lifes={this.state.lifes}/>
                     <Time time={this.state.time}/>
                     <div className="timeKeeper">
-                        <div className="br"></div>
+                        <div></div>
                     </div>
                     <div className="flags">
                         <h1>{this.state.correctCountry}</h1>
@@ -148,7 +169,7 @@ class Game extends React.Component{
                     </div>
                 </div>
             </div>
-        ) : <GameOver win={this.state.win}/>
+        ) : <GameOver win={this.state.win} score={this.state.score}/>
     }
 }
 

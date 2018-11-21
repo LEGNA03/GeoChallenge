@@ -24,6 +24,10 @@
       }
     }
     .flags {
+      h1 {
+        margin-bottom: 50px;
+        font-size: 40px;
+      }
       margin-top: 300px;
       @include columns;
       .flag {

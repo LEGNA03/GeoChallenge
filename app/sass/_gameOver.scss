@@ -1,0 +1,13 @@
+.gameOverBox {
+  @include conteinter;
+  .gameOver {
+    @include mainBox;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+      h1 {
+        font-size: 50px;
+      }
+  }
+}
