@@ -76,7 +76,6 @@ class Game extends React.Component{
                         time: this.state.time - 1,
                     });
                 } else {
-                    clearInterval(this.interval);
                     this.setState({
                         lifes: this.state.lifes - 1,
                         streak: 0,
@@ -97,8 +96,8 @@ class Game extends React.Component{
     }
 
     clickHandler = (flag) => {
+            clearInterval(this.interval);
             if (flag.name === this.state.correctCountry) {
-                clearInterval(this.interval);
                 this.getRandomFlags();
                 this.run();
                 if(!this.state.win){
@@ -111,11 +110,14 @@ class Game extends React.Component{
                     });
                 }
             } else {
+                clearInterval(this.interval);
+                this.run();
                 this.getRandomFlags();
                 if(!this.state.win){
                     this.setState({
                         streak: 0,
                         lifes: this.state.lifes - 1
+
                     });
                 }
             }
@@ -128,7 +130,7 @@ class Game extends React.Component{
                     <Score score={this.state.score} streak={this.state.streak} lifes={this.state.lifes}/>
                     <Time time={this.state.time}/>
                     <div className="timeKeeper">
-                        <div className="bar"></div>
+                        <div className="ar"></div>
                     </div>
                     <div className="flags">
                         <h1>{this.state.correctCountry}</h1>
