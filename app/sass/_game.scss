@@ -1,6 +1,28 @@
+@keyframes move {
+  0% {
+    width: 800px;
+  }
+  100% {
+    width: 0;
+  }
+}
+
 .conteiner {
   .mainContent {
     @include mainBox;
+    .timeKeeper {
+      display: flex;
+      justify-content: center;
+      .bar {
+        width: 800px;
+        height: 20px;
+        background: green;
+        animation-name: move;
+        animation-duration: 10s;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
+      }
+    }
     .flags {
       margin-top: 300px;
       @include columns;

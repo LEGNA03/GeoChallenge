@@ -3,7 +3,9 @@ import React from "react";
 class Time extends React.Component{
     render(){
         return (
-            <h1>{this.props.time}</h1>
+            <div className="timeBox">
+                <h1>{this.props.time}</h1>
+            </div>
         );
     }
 }

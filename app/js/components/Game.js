@@ -2,6 +2,7 @@ import React from "react";
 import flags from "./Flags";
 import Score from "./Score";
 import Time from "./Time";
+import GameOver from "./GameOver";
 
 class Game extends React.Component{
     constructor(props){
@@ -16,7 +17,6 @@ class Game extends React.Component{
             lifes: 3,
             time: 10,
             win: false,
-            gameOver: false
         }
     }
 
@@ -49,14 +49,12 @@ class Game extends React.Component{
                 finalFlags: finalSetOfFlags,
                 correctCountry: randomCountry,
                 arrCountries: this.state.arrCountries
-            })
+            });
         } else {
-            console.log("Gratuluje");
             this.setState({
                 win: true
             });
         }
-
     };
 
     getRandomNumber(max, exclude = null){
@@ -67,24 +65,52 @@ class Game extends React.Component{
         return randomNumber;
     }
 
+    run = () => {
+        if(!this.state.win && this.state.arrCountries.length >= 1) {
+            this.setState({
+                time: 10,
+            });
+            this.interval = setInterval(() => {
+                if (this.state.time >= 1) {
+                    this.setState({
+                        time: this.state.time - 1,
+                    });
+                } else {
+                    clearInterval(this.interval);
+                    this.setState({
+                        lifes: this.state.lifes - 1,
+                        streak: 0,
+                        time: 10
+                    }, () => {
+                        this.run();
+                    });
+                    this.getRandomFlags()
+                }
+            }, 1000);
+        }
+    };
+
     componentDidMount() {
-        this.getRandomFlags()
+        this.getRandomFlags();
+        this.run();
+
     }
 
     clickHandler = (flag) => {
-        console.log(this.state.arrCountries.length);
-        if(this.state.arrCountries.length >= 0) {
             if (flag.name === this.state.correctCountry) {
-                console.log("brawo");
+                clearInterval(this.interval);
                 this.getRandomFlags();
+                this.run();
                 if(!this.state.win){
                     this.setState({
                         streak: this.state.streak + 1,
-                        score: this.state.score + (10 * (1 + this.state.streak))
+                    }, () => {
+                        this.setState({
+                            score: this.state.score + (10 * this.state.streak)
+                        })
                     });
                 }
             } else {
-                console.log("źle");
                 this.getRandomFlags();
                 if(!this.state.win){
                     this.setState({
@@ -93,15 +119,17 @@ class Game extends React.Component{
                     });
                 }
             }
-        }
     };
 
     render(){
-        return this.state.lifes > 0 ? (
+        return !this.state.win && this.state.lifes > 0 ?(
             <div className="conteiner">
                 <div className="mainContent">
                     <Score score={this.state.score} streak={this.state.streak} lifes={this.state.lifes}/>
                     <Time time={this.state.time}/>
+                    <div className="timeKeeper">
+                        <div className="bar"></div>
+                    </div>
                     <div className="flags">
                         <h1>{this.state.correctCountry}</h1>
                         <div>
@@ -109,7 +137,7 @@ class Game extends React.Component{
                                 this.state.finalFlags.map((flag, index) => {
                                     return <img className="flag" key={index} src={flag.img} alt="" onClick={() =>{
                                         this.clickHandler(flag)
-                                    }
+                                        }
                                     }/>
                                 })
                             }
@@ -117,10 +145,8 @@ class Game extends React.Component{
                     </div>
                 </div>
             </div>
-        ) : <h1>Game Over</h1>
+        ) : <GameOver win={this.state.win}/>
     }
 }
 
 export default Game;
-
-// : <GameOver win={this.state.win}/>;
