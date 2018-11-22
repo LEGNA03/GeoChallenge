@@ -3,6 +3,15 @@
   justify-content: center;
 }
 
+@mixin buttons {
+  font-size: 20px;
+  background: lightpink;
+  width: 250px;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
 @mixin mainBox {
   width: 1300px;
   height: 800px;
@@ -28,12 +37,7 @@
       font-size: 40px;
     }
     button {
-      font-size: 20px;
-      background: lightpink;
-      width: 250px;
-      height: 100px;
-      border-radius: 5px;
-      border: 1px solid black;
+      @include buttons;
     }
   }
 }

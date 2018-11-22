@@ -9,5 +9,11 @@
       h1 {
         font-size: 50px;
       }
+      h2 {
+        margin: 30px 0;
+      }
+      button {
+        @include buttons;
+      }
   }
 }

@@ -516,7 +516,7 @@ module.exports = [
             name:"Tonga",
             img: "/images/tonga.png"
         }, {
-            name:"Trynidad i Tobago",
+            name:"Trynidad i Tabago",
             img: "/images/trynidad_i_tobago.png"
         }, {
             name:"Tunezja",
