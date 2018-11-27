@@ -167,7 +167,7 @@ class Game extends React.Component{
                             this.state.time > 0 && <div style={{
                                 width: `${((this.state.time * 10))}%`,
                                 height: '30px',
-                                backgroundColor: 'red'
+                                backgroundColor: 'green'
                             }}></div>
                         }
                     </div>
